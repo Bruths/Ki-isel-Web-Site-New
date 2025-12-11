@@ -1,0 +1,433 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+}
+.logo-img {
+  width: 70px;
+  height: auto;
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+/* NAVBAR */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 66px;
+  height: 66px;
+  background-color: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  animation: fadeDown 1s ease forwards;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #ddd;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* HERO SECTION */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 3rem 1rem;
+  /* Arka plan görseli + hafif koyu overlay */
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("images/berat2.jpg") center/cover no-repeat;
+  /* kaydırırken görselin sabit kalması */
+  background-attachment: fixed;
+  position: relative;
+}
+
+/* Mobilde background-attachment: fixed performans ve destek sorunları olabileceğinden devre dışı bırak */
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+  }
+}
+
+/* İçeriğin overlay altında kalmaması için */
+.hero .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  animation: fadeUp 1s ease forwards;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.title span {
+  color: #00bfff;
+}
+
+.subtitle {
+  margin: 10px 0 30px;
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #00bfff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: 0.3s;
+  font-weight: 600;
+}
+.a {
+  color: #fff;
+}
+
+.btn:hover {
+  background: #009acd;
+}
+
+/* ABOUT */
+.about .about-images {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.about .about-images img {
+  width: 440px;
+  height: 440px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hafif lift efekti */
+.about .about-images img:hover {
+  transform: translateY(-2px) scale(1.82);
+  box-shadow: 0 34px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Küçük ekranlarda daha küçük daireler */
+@media (max-width: 768px) {
+  .about .about-images img {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+.about,
+.projects,
+.contact {
+  padding: 100px 60px;
+  text-align: center;
+}
+
+.about h2,
+.projects h2,
+.contact h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* PROJECTS */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  align-items: start;
+  grid-auto-rows: minmax(180px, auto);
+}
+
+/* Project5 + 6/7/8 içeren kolonun genişleyip proje 2'nin altına kadar uzanması */
+.project-column {
+  grid-column: 2 / span 2; /* 2. sütundan başlayıp 2 sütun genişliğe yayılıyor */
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  text-align: center;
+  margin-left: 220px;
+  gap: 12px;
+}
+.social-fixed {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.social-icon {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+}
+
+.social-icon:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.social-icon.github:hover {
+  color: #333;
+  background: #fff;
+  border-color: #fff;
+}
+
+.social-icon.instagram:hover {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  border-color: transparent;
+  color: #fff;
+}
+
+.social-icon.linkedin:hover {
+  background: #0a66c2;
+  border-color: #0a66c2;
+  color: #fff;
+}
+
+.social-icon svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+/* Mobilde gizle */
+@media (max-width: 768px) {
+  .social-fixed {
+    right: 12px;
+    gap: 14px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Alt yığındaki kartların kolon genişliğini doğru kullanması için */
+.project-stack .project-card {
+  width: 200px;
+  margin: 0;
+}
+
+/* Küçük ekranlarda span kaldırılarak akışa dönülür */
+@media (max-width: 1199px) {
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .project-column {
+    grid-column: auto;
+  }
+}
+@media (max-width: 899px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .project-column {
+    grid-column: auto;
+  }
+}
+@media (max-width: 480px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-column {
+    grid-column: auto;
+  }
+}
+.projects .project-card:hover img:hover {
+  transform: translateY(-2px) scale(1.82);
+  box-shadow: 0 34px 30px rgba(0, 0, 0, 0.7);
+}
+
+.project-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(0, 0, 0, 0.08)
+  );
+  padding: 12px;
+  border-radius: 12px;
+  overflow: visible; /* hover ile taşan kısmın görünmesi için */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.25s ease, z-index 0.2s;
+}
+
+.project-card img {
+  width: 400px;
+  height: 400px; /* kutu yüksekliği — ihtiyaca göre ayarla */
+  object-fit: contain; /* görsel tamamı görünür (kırpma yok) */
+  object-position: center; /* ortala */
+  background: #0b0b0b; /* boş kalan alan için arka plan */
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+  will-change: transform;
+  transform-origin: center;
+}
+
+/* Hover: görsel öne doğru yaklaşsın (taşma görünür olmalı) */
+.project-card {
+  overflow: visible; /* zaten varsa koru */
+}
+.project-card:hover img {
+  transform: translateY(-14px) scale(1.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75);
+}
+
+/* Küçük ekranlarda görsel kutusunu küçült */
+@media (max-width: 768px) {
+  .project-card img {
+    height: 160px;
+  }
+}
+
+/* Dokunmatik cihazlarda hover efektini devre dışı bırak (performans ve UX) */
+@media (hover: none), (max-width: 768px) {
+  .project-card img {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .project-card:hover img {
+    transform: none;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Daha geniş ekranlarda daha sıkı grid (3 veya 4 sütun) */
+@media (min-width: 1200px) {
+  .project-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 899px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeCard {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
